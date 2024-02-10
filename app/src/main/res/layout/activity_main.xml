@@ -8,9 +8,9 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="91dp"
-        android:layout_height="96dp"
+        android:layout_width="133dp"
+        android:layout_height="149dp"
         app:srcCompat="@drawable/add"
-        tools:layout_editor_absoluteX="315dp"
-        tools:layout_editor_absoluteY="619dp" />
+        tools:layout_editor_absoluteX="273dp"
+        tools:layout_editor_absoluteY="566dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
