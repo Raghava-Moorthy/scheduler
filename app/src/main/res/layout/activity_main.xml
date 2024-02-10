@@ -4,13 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#898121"
     tools:context=".MainActivity">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="133dp"
-        android:layout_height="149dp"
-        app:srcCompat="@drawable/add"
-        tools:layout_editor_absoluteX="273dp"
-        tools:layout_editor_absoluteY="566dp" />
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="344dp"
+        android:layout_height="66dp"
+        android:background="@drawable/search_view_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.097" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#E7B10A"
+        android:clickable="true"
+        app:backgroundTint="#F7F1E5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.898"
+        app:srcCompat="@drawable/img"
+        android:contentDescription="@string/floating_action_button_description" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
