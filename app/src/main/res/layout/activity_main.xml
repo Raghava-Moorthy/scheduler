@@ -7,10 +7,10 @@
     tools:context=".MainActivity">
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="91dp"
-        android:layout_height="96dp"
-        app:srcCompat="@drawable/add"
-        tools:layout_editor_absoluteX="315dp"
-        tools:layout_editor_absoluteY="619dp" />
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="586dp"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>
