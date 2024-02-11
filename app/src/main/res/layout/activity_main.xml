@@ -4,37 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#898121"
+    android:background="@color/lightBlack"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="293dp"
+        android:layout_height="42dp"
+        android:fontFamily="@font/stalinist_one"
+        android:text="Search Time Table by Class Name:"
+        android:textColor="@color/grey"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.117"
+        tools:ignore="HardcodedText" />
+
 
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="344dp"
         android:layout_height="66dp"
         android:background="@drawable/search_view_bg"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.209" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#E7B10A"
+        android:background="@color/orange"
         android:clickable="true"
-        app:backgroundTint="#F7F1E5"
+        android:contentDescription="@string/floating_action_button_description"
+        app:backgroundTint="@color/grey"
+        app:borderWidth="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.905"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.898"
-        app:srcCompat="@drawable/img"
-        android:contentDescription="@string/floating_action_button_description" />
-
+        app:srcCompat="@drawable/img" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
