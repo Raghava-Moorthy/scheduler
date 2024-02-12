@@ -46,7 +46,7 @@
         android:background="@color/orange"
         android:clickable="true"
         android:contentDescription="@string/floating_action_button_description"
-        app:backgroundTint="@color/grey"
+        app:backgroundTint="@color/orange"
         app:borderWidth="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
