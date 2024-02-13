@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Scheduler</string>
-    <string name="floating_action_button_description">Add Item</string>
+    <string name="plusBtn">Add Item</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="className">Enter a File Name to Save</string>
+    <string name="fileName">File Name</string>
+    <string name="hours">Hours</string>
+    <string name="days">Days</string>
+    <string name="nodays">No of Days</string>
+    <string name="nohours">No of Hours</string>
+<!--    <string name=""></string>-->
+<!--    <string name=""></string>-->
 </resources>

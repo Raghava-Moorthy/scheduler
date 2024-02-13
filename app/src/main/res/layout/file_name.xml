@@ -9,156 +9,129 @@
     tools:layout_editor_absoluteY="15dp">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="321dp"
+        android:id="@+id/fileName"
+        android:layout_width="200dp"
         android:layout_height="28dp"
-        android:fontFamily="@font/stalinist_one"
+        android:fontFamily="@font/alegreya"
         android:gravity="center"
-        android:text="Enter Number of days:"
+        android:text="@string/className"
         android:textColor="@color/grey"
-        android:textSize="15sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.204"
-        tools:ignore="HardcodedText" />
-
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="325dp"
-        android:layout_height="44dp"
-        android:background="@drawable/search_view_bg"
-        android:ems="10"
-        android:fontFamily="@font/alata"
-        android:gravity="center"
-        android:hint="Days in numbers"
-        android:inputType="number"
-        android:singleLine="false"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.569"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
-
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="325dp"
-        android:layout_height="44dp"
-        android:background="@drawable/search_view_bg"
-        android:ems="10"
-        android:fontFamily="@font/alata"
-        android:gravity="center"
-        android:hint="Subjects in numbers"
-        android:inputType="number"
-        android:singleLine="false"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.588" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="360dp"
-        android:layout_height="44dp"
-        android:fontFamily="@font/stalinist_one"
-        android:gravity="center"
-        android:text="Enter Number Of Periods Per Day:"
-        android:textColor="@color/grey"
-        android:textSize="15sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.359"
-        tools:ignore="HardcodedText" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="360dp"
-        android:layout_height="44dp"
-        android:fontFamily="@font/stalinist_one"
-        android:gravity="center"
-        android:text="Enter Number Of Subjects:"
-        android:textColor="@color/grey"
-        android:textSize="15sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.521"
-        tools:ignore="HardcodedText" />
-
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="325dp"
-        android:layout_height="44dp"
-        android:background="@drawable/search_view_bg"
-        android:ems="10"
-        android:fontFamily="@font/alata"
-        android:gravity="center"
-        android:hint="Periods in numbers"
-        android:inputType="number"
-        android:singleLine="false"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.423" />
-
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="325dp"
-        android:layout_height="44dp"
-        android:background="@drawable/search_view_bg"
-        android:ems="10"
-        android:fontFamily="@font/alata"
-        android:gravity="center"
-        android:hint="Class Name"
-        android:inputType="text"
-        android:singleLine="false"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.104" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="321dp"
-        android:layout_height="28dp"
-        android:fontFamily="@font/stalinist_one"
-        android:gravity="center"
-        android:text="Enter Your Class Name:"
-        android:textColor="@color/grey"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.062"
-        tools:ignore="HardcodedText" />
+ />
+
+    <EditText
+        android:id="@+id/className"
+        android:layout_width="205dp"
+        android:layout_height="44dp"
+        android:background="@drawable/edittext"
+        android:ems="10"
+        android:fontFamily="@font/alata"
+        android:gravity="center"
+        android:hint="@string/fileName"
+        android:inputType="text"
+        android:singleLine="false"
+        android:textColor="@color/orange"
+        android:textColorHint="@color/orange"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.122" />
+
+    <TextView
+        android:id="@+id/no_of_days"
+        android:layout_width="100dp"
+        android:layout_height="28dp"
+        android:fontFamily="@font/alegreya"
+        android:gravity="center"
+        android:text="@string/nodays"
+        android:textColor="@color/grey"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24"/>
+
+    <EditText
+        android:id="@+id/days"
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:background="@drawable/edittext"
+        android:ems="10"
+        android:fontFamily="@font/alata"
+        android:gravity="center"
+        android:hint="@string/days"
+        android:inputType="number"
+        android:textColor="@color/orange"
+        android:textColorHint="@color/orange"
+        android:singleLine="false"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307" />
+
+    <TextView
+        android:id="@+id/no_of_hours"
+        android:layout_width="100dp"
+        android:layout_height="28dp"
+        android:fontFamily="@font/alegreya"
+        android:gravity="center"
+        android:text="@string/nohours"
+        android:textColor="@color/grey"
+        android:visibility="invisible"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24" />
+
+    <EditText
+        android:id="@+id/hours"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/edittext"
+        android:ems="10"
+        android:fontFamily="@font/alata"
+        android:textAlignment="center"
+        android:hint="@string/hours"
+        android:inputType="number"
+        android:singleLine="false"
+        android:textSize="18sp"
+        android:textColor="@color/orange"
+        android:textColorHint="@color/orange"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.778"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307" />
+
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@android:string/cancel"
+        android:text="@string/cancel"
         app:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -168,11 +141,12 @@
         app:layout_constraintVertical_bias="0.751" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/saveBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="@string/save"
         app:backgroundTint="@color/orange"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.808"
@@ -181,3 +155,43 @@
         app:layout_constraintVertical_bias="0.751" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/editTextText"-->
+    <!--        android:layout_width="325dp"-->
+    <!--        android:layout_height="44dp"-->
+    <!--        android:background="@drawable/search_view_bg"-->
+    <!--        android:ems="10"-->
+    <!--        android:fontFamily="@font/alata"-->
+    <!--        android:gravity="center"-->
+    <!--        android:hint="Subjects in numbers"-->
+    <!--        android:inputType="number"-->
+    <!--        android:singleLine="false"-->
+    <!--        android:textSize="20sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.476"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.588" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView"-->
+    <!--        android:layout_width="360dp"-->
+    <!--        android:layout_height="44dp"-->
+    <!--        android:fontFamily="@font/alegreya"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="Enter Number Of Subjects:"-->
+    <!--        android:textColor="@color/grey"-->
+    <!--        android:textSize="15sp"-->
+    <!--        android:textStyle="italic"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.49"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.521"-->
+    <!-- />-->
+

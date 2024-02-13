@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textHeading"
         android:layout_width="293dp"
         android:layout_height="42dp"
         android:fontFamily="@font/stalinist_one"
@@ -27,12 +27,13 @@
 
 
     <SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/searchBar"
         android:layout_width="344dp"
         android:layout_height="66dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Enter a class name to search"
         android:background="@drawable/search_view_bg"
         android:gravity="center"
-        android:textColor = "@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -41,13 +42,13 @@
         app:layout_constraintVertical_bias="0.209" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
+        android:id="@+id/addBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/orange"
         android:clickable="true"
-        android:contentDescription="@string/floating_action_button_description"
+        android:contentDescription="@string/plusBtn"
         app:backgroundTint="@color/orange"
+        app:background="@color/orange"
         app:backgroundTintMode="add"
         app:borderWidth="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
