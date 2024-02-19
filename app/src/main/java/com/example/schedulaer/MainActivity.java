@@ -3,20 +3,24 @@ package com.example.schedulaer;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.SearchView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.android.car.ui.toolbar.TabLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         FloatingActionButton fab = findViewById(R.id.addBtn);
         fab.setOnClickListener(view -> {
             // Navigate to file_name.xml activity

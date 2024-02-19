@@ -77,14 +77,21 @@ public class FileNameActivity extends AppCompatActivity {
             days.setText("");
             flag++;
         }
-        if (hour > 8 || hour < 4) {
+        if (hour > 8 || hour < 3) {
             Toast.makeText(FileNameActivity.this, "Enter a Valid Number of Working Hours", Toast.LENGTH_SHORT).show();
             hours.setText("");
             flag++;
         }
         if (flag == 0) {
-            Toast.makeText(this, "Input Fields filled ", Toast.LENGTH_SHORT).show();
+            Intent tabIntent = new Intent(this, MainActivity.class);
+            tabIntent.putExtra("className", className.getText().toString());
+            sendBroadcast(tabIntent);
+            proceeedToProcess();
         }
+    }
+    protected void proceeedToProcess(){
+        Intent processIntent = new Intent(this, process.class);
+        startActivity(processIntent);
 
     }
 }
