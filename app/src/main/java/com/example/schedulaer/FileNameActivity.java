@@ -16,24 +16,19 @@ public class FileNameActivity extends AppCompatActivity {
     EditText className, days, hours;
     TextView noOfDays, noOfHours;
     Button save;
+    int flag = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.file_name);
-
-
         toggleElements();
         save = findViewById(R.id.saveBtn);
         save.setOnClickListener(view -> validateDayHour());
         Button cancelButton = findViewById(R.id.button);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Navigate back to MainActivity
-                Intent intent = new Intent(FileNameActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        cancelButton.setOnClickListener(view -> {
+            Intent intent = new Intent(FileNameActivity.this, MainActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -51,12 +46,18 @@ public class FileNameActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String text = String.valueOf(className.getText());
-                if (text.length() > 1) {
+                if (text.length() > 3) {
                     days.setVisibility(View.VISIBLE);
                     hours.setVisibility(View.VISIBLE);
                     noOfDays.setVisibility(View.VISIBLE);
                     noOfHours.setVisibility(View.VISIBLE);
                     save.setVisibility(View.VISIBLE);
+                } else {
+                    days.setVisibility(View.INVISIBLE);
+                    hours.setVisibility(View.INVISIBLE);
+                    noOfDays.setVisibility(View.INVISIBLE);
+                    noOfHours.setVisibility(View.INVISIBLE);
+                    save.setVisibility(View.INVISIBLE);
                 }
             }
 
@@ -69,27 +70,33 @@ public class FileNameActivity extends AppCompatActivity {
     protected void validateDayHour() {
         days = findViewById(R.id.days);
         hours = findViewById(R.id.hours);
-        int day = Integer.parseInt(String.valueOf(days.getText()));
-        int hour = Integer.parseInt(String.valueOf(hours.getText()));
-        int flag = 0;
-        if (day == 0 || day > 5) {
-            Toast.makeText(FileNameActivity.this, "Enter a Valid Number of Working Days", Toast.LENGTH_SHORT).show();
-            days.setText("");
-            flag++;
+        className = findViewById(R.id.className);
+        if (days.getText().toString().equals("") && hours.getText().toString().equals(""))
+            Toast.makeText(this, "Enter all the input fields", Toast.LENGTH_SHORT).show();
+        else {
+            int day = Integer.parseInt(String.valueOf(days.getText()));
+            int hour = Integer.parseInt(String.valueOf(hours.getText()));
+            if (day < 5) {
+                Toast.makeText(FileNameActivity.this, "Enter a Valid Number of Working Days", Toast.LENGTH_SHORT).show();
+                days.setText("");
+                flag++;
+            }
+            if (hour > 8 || hour < 3) {
+                Toast.makeText(FileNameActivity.this, "Enter a Valid Number of Working Hours", Toast.LENGTH_SHORT).show();
+                hours.setText("");
+                flag++;
+            }
+            if (flag == 0) {
+                Intent tabIntent = new Intent(this, MainActivity.class);
+                tabIntent.putExtra("className", className.getText().toString());
+                sendBroadcast(tabIntent);
+                proceeedToProcess();
+            }
         }
-        if (hour > 8 || hour < 3) {
-            Toast.makeText(FileNameActivity.this, "Enter a Valid Number of Working Hours", Toast.LENGTH_SHORT).show();
-            hours.setText("");
-            flag++;
-        }
-        if (flag == 0) {
-            Intent tabIntent = new Intent(this, MainActivity.class);
-            tabIntent.putExtra("className", className.getText().toString());
-            sendBroadcast(tabIntent);
-            proceeedToProcess();
-        }
+
     }
-    protected void proceeedToProcess(){
+
+    protected void proceeedToProcess() {
         Intent processIntent = new Intent(this, process.class);
         startActivity(processIntent);
 
