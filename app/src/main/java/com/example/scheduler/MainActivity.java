@@ -1,4 +1,4 @@
-package com.example.schedulaer;
+package com.example.scheduler;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,5 +25,6 @@ public class MainActivity extends AppCompatActivity {
         TextView searchText = search.findViewById(searchId);
         int searchTextColor = ContextCompat.getColor(this,R.color.orange);
         searchText.setTextColor(searchTextColor);
+
     }
 }

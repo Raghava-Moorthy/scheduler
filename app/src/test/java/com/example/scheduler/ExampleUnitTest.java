@@ -1,4 +1,4 @@
-package com.example.schedulaer;
+package com.example.scheduler;
 
 import org.junit.Test;
 

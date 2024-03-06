@@ -9,7 +9,7 @@
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Schedulaer"
+        android:theme="@style/Theme.Scheduler"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
