@@ -5,16 +5,19 @@
     android:id="@+id/bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
     android:background="@color/lightBlack"
     tools:context=".MainActivity">
 
 
-    <SearchView
+    <android.widget.SearchView
         android:id="@+id/searchBar"
         android:layout_width="344dp"
         android:layout_height="66dp"
         android:background="@drawable/search_view_bg"
         android:gravity="center"
+        android:focusable="false"
         android:iconifiedByDefault="false"
         android:queryHint="Enter a class name to search"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,60 +45,60 @@
         app:layout_constraintVertical_bias="0.898"
         app:srcCompat="@drawable/img" />
 
-    <ScrollView
-        android:layout_width="407dp"
-        android:layout_height="630dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar">
+        app:layout_constraintTop_toBottomOf="@id/searchBar">
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/contentLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/lightBlack"
-            tools:context=".MainActivity">
+            android:orientation="vertical">
 
-            <!-- Include the TabsFragment -->
-            <fragment
-                android:id="@+id/tabsFragment"
-                android:name="com.example.scheduler.TabsFragment"
+            <LinearLayout
+                android:id="@+id/cardContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true" />
-
-            <!-- Include the ImageView -->
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="399dp"
-                android:layout_height="218dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="3dp"
-                android:layout_marginBottom="0dp"
-                android:alpha="0.5"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:contextClickable="true"
+                android:orientation="vertical"
+                android:textAlignment="center"
+                android:tooltipText="Schedule Name"
+                app:layout_constraintBottom_toTopOf="@id/imageView2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/clg_students" />
+                app:layout_constraintTop_toBottomOf="@id/searchBar" />
 
-        </RelativeLayout>
-    </ScrollView>
 
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Include the ImageView -->
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="399dp"
+        android:layout_height="218dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="3dp"
+        android:alpha="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
+        app:layout_constraintVertical_bias="0.993"
+        app:srcCompat="@drawable/clg_students" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--<ImageView-->
-<!--android:id="@+id/imageView2"-->
-<!--android:layout_width="399dp"-->
-<!--android:layout_height="218dp"-->
-<!--android:alpha="0.5"-->
-<!--app:layout_constraintBottom_toBottomOf="parent"-->
-<!--app:layout_constraintEnd_toEndOf="parent"-->
-<!--app:layout_constraintStart_toStartOf="parent"-->
-<!--app:layout_constraintTop_toTopOf="parent"-->
-<!--app:layout_constraintVertical_bias="0.996"-->
-<!--app:srcCompat="@drawable/clg_students" />-->

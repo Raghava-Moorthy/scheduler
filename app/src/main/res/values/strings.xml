@@ -1,14 +1,15 @@
 <resources>
     <string name="app_name">Scheduler</string>
     <string name="plusBtn">Add Item</string>
-    <string name="save">Save</string>
-    <string name="cancel">Cancel</string>
-    <string name="className">Enter a File Name to Save</string>
-    <string name="fileName">File Name</string>
-    <string name="hours">Hours</string>
-    <string name="days">Days</string>
-    <string name="nodays">No of Days</string>
-    <string name="nohours">No of Hours</string>
-<!--    <string name=""></string>-->
-<!--    <string name=""></string>-->
+    <string name="numberOfHours">Enter a Number of Hours per day</string>
+    <string name="noOfHrs">7</string>
+    <string name="remainingHours">Remaining Hours</string>
+    <string name="hourValue">0</string>
+    <string name="lecture">Total Number of Lecture Hours</string>
+    <string name="lectureHrs">12</string>
+    <string name="parallelLecture">Total Number of parallel Lecture Hours</string>
+    <string name="parallelLectureHrs">8</string>
+    <string name="lab">Total Number of Lab Hours</string>
+    <string name="labHrs">6</string>
+    <string name="parallelLab">Total Number of parallel Lab Hours</string>
 </resources>
