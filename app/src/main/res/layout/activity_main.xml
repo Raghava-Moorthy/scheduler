@@ -1,104 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/bg"
-    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent">
+
+<androidx.viewpager2.widget.ViewPager2
     android:layout_height="match_parent"
-    android:focusableInTouchMode="true"
-    android:focusable="true"
-    android:background="@color/lightBlack"
-    tools:context=".MainActivity">
+    android:layout_width="match_parent"
+    android:id="@+id/pager"
+    />
 
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:id="@+id/tabs"
+        android:background="@color/colorPrimary"
+        app:tabTextColor="#ffffff"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabMode="scrollable"/>
 
-    <android.widget.SearchView
-        android:id="@+id/searchBar"
-        android:layout_width="344dp"
-        android:layout_height="66dp"
-        android:background="@drawable/search_view_bg"
-        android:gravity="center"
-        android:focusable="false"
-        android:iconifiedByDefault="false"
-        android:queryHint="Enter a class name to search"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addBtn"
+        android:id="@+id/floatingActionButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:contentDescription="@string/plusBtn"
-        app:background="@color/orange"
-        app:backgroundTint="@color/orange"
-        app:backgroundTintMode="add"
-        app:borderWidth="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.905"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.898"
-        app:srcCompat="@drawable/img" />
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@id/imageView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchBar">
-
-        <LinearLayout
-            android:id="@+id/contentLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/cardContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:contextClickable="true"
-                android:orientation="vertical"
-                android:textAlignment="center"
-                android:tooltipText="Schedule Name"
-                app:layout_constraintBottom_toTopOf="@id/imageView2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/searchBar" />
-
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-
-    <!-- Include the ImageView -->
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="399dp"
-        android:layout_height="218dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+        android:layout_gravity="bottom|right"
+        app:fabSize="normal"
+        android:onClick="Addtime"
+        android:src="@drawable/plus"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="3dp"
-        android:alpha="0.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar"
-        app:layout_constraintVertical_bias="0.993"
-        app:srcCompat="@drawable/clg_students" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="26dp"
+        app:rippleColor="@color/colorPrimary"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

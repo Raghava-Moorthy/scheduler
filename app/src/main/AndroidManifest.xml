@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,23 +13,32 @@
         android:theme="@style/Theme.Scheduler"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".Splashscreen"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".ScheduleTime"
-            android:exported="true">
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
         </activity>
+        <activity android:name=".AddSchedule"
+            android:label="Add Your Schedule">
+
+        </activity>
+        <activity android:name=".View_Schedule"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
+        <provider android:name=".Data"
+            android:authorities="com.example.scheduler"/>
+        <receiver android:name=".MyBroadcastReciever" />
     </application>
-
 </manifest>

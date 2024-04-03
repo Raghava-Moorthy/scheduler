@@ -1,13 +1,12 @@
 <resources>
-    <string name="app_name">Scheduler</string>
+    <string name="app_name">Timify</string>
     <string name="from">From</string>
     <string name="to">To</string>
     <string name="subject">Subject</string>
     <string-array name="Type">
-        <item>Webinar</item>
+        <item>Lecture</item>
         <item>Seminar</item>
-        <item>Workshop</item>
-        <item>Presentation</item>
+        <item>Practical</item>
     </string-array>
     <string-array name="days">
         <item>Monday</item>
@@ -18,5 +17,4 @@
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
-    <string name="msg">Click the plus button below to schedule</string>
 </resources>

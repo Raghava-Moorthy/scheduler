@@ -1,120 +1,156 @@
 package com.example.scheduler;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
-
-import android.content.DialogInterface;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.SearchView;
-import android.widget.TextView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.fragment.app.FragmentActivity;
+import androidx.preference.PreferenceManager;
+import android.view.View;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager2.widget.ViewPager2;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private String f;
-    private SearchView search;
-    private View root;
-    private ScrollView scrv;
+    ViewPager2 viewPager;
+    TabLayout tabLayout;
+    static String[] titles;
+    public int pos;
+    MyAdapter myAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        root = findViewById(R.id.bg);
-        search = findViewById(R.id.searchBar);
-        search.clearFocus();
-        search.clearChildFocus(search);
-        int searchId = search.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-        TextView searchText = search.findViewById(searchId);
-        int searchTextColor = ContextCompat.getColor(this, R.color.darkGrey);
-        searchText.setTextColor(searchTextColor);
-        search.setOnClickListener(v -> search.findFocus());
-        FloatingActionButton fab = findViewById(R.id.addBtn);
-        fab.setOnClickListener(view -> {
-            fileName();
-            search.clearFocus();
-        });
+
+        Resources res = getResources();
+        titles = res.getStringArray(R.array.days);  //Fetching the days name from the strings.xml
+
+        onNotification();           //Method to set the notification
+
+        tabLayout = findViewById(R.id.tabs);
+        viewPager = findViewById(R.id.pager);
+
+        FragmentManager f = getSupportFragmentManager();
+        myAdapter = new MyAdapter(this,titles);
+        viewPager.setAdapter(myAdapter);
+        new TabLayoutMediator(tabLayout,viewPager, (tab,position) -> tab.setText(titles[position])).attach();
+//        tabLayout.setupWithViewPager(viewPager);
+        viewPager.setOffscreenPageLimit(7);         //It sets how much pages should be remained saved offscreen
+
+        Calendar sCalendar = Calendar.getInstance();
+        String dayLongName = sCalendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+
+        switch (dayLongName) {
+            case "Monday":
+                viewPager.setCurrentItem(0);
+                break;
+            case "Tuesday":
+                viewPager.setCurrentItem(1);         //This switch checks which day of the week
+                break;                                          // is today and which page is to show when open
+            case "Wednesday":
+                viewPager.setCurrentItem(2);       // the app
+                break;
+            case "Thursday":
+                viewPager.setCurrentItem(3);
+                break;
+            case "Friday":
+                viewPager.setCurrentItem(4);
+                break;
+            case "Saturday":
+                viewPager.setCurrentItem(5);
+                break;
+            case "Sunday":
+                viewPager.setCurrentItem(6);
+                break;
+            default:
+                viewPager.setCurrentItem(0);
+        }
+
+
     }
-    @Override
-    protected void onResume(){
-        super.onResume();
-        if (search != null) {
-            search.setQuery("", false);
-            search.clearFocus();
-            root.requestFocus();
+
+    public void Addtime(View view) {
+        Intent i = new Intent(this, AddSchedule.class);
+        Bundle b = new Bundle();                        //  This is the method which is called when the Floating
+        b.putInt("ID", viewPager.getCurrentItem());      //  button is clicked
+        i.putExtras(b);
+        startActivity(i);
+    }
+    private void onNotification() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String name = preferences.getString("Notify", null);
+        if (name == null) {
+            name = "1";
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("Notify", name);
+            editor.commit();                                   //Here when for the first time
+            //this method will be called then
+            AlarmManager manager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE); //an alarm will be set for
+            Date dat = new Date();                              // 7:00 which will repeat after 24 hours
+            Calendar cal_alarm = Calendar.getInstance();        //The alarm will not be created again once created
+            Calendar cal_now = Calendar.getInstance();
+            cal_now.setTime(dat);
+            cal_alarm.setTime(dat);
+            cal_alarm.set(Calendar.HOUR_OF_DAY, 7);
+            cal_alarm.set(Calendar.MINUTE, 0);
+            cal_alarm.set(Calendar.SECOND, 0);
+            if (cal_alarm.before(cal_now)) {
+                cal_alarm.add(Calendar.DATE, 1);
+            }
+            Intent myIntent = new Intent(this, MyBroadcastReciever.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent,  PendingIntent.FLAG_UPDATE_CURRENT);
+            manager.setRepeating(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(), 24 * 60 * 60 * 1000, pendingIntent);
         }
     }
-    private void fileName() {
-        EditText ed = new EditText(MainActivity.this);
-        AlertDialog.Builder nameBox = new AlertDialog.Builder(MainActivity.this);
-        nameBox.setMessage("Enter the Schedule Name");
-        nameBox.setView(ed);
 
-        nameBox.setPositiveButton("Create", null);
-        AlertDialog alertDialog = nameBox.create();
-        alertDialog.setOnShowListener(dialogInterface -> {
-            AlertDialog d = (AlertDialog) dialogInterface;
-            d.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-            ed.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
+}
 
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    String text = s.toString();
-                    d.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(text.length() > 3);
-                    f = text;
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                }
-            });
-        });
-        alertDialog.setCancelable(false);
-
-        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", (dialog, which) -> dialog.cancel());
-
-        alertDialog.show();
-        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(view -> {
-            Intent inte = new Intent(MainActivity.this, ScheduleTime.class);
-            startActivity(inte);
-            new Handler(getMainLooper()).postDelayed(() -> {
-                CardView cardView = new CardView(MainActivity.this);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        dpToPx(50)
-                );
-                params.setMargins(20, 20, 20, 20);
-                cardView.setLayoutParams(params);
-                cardView.setCardBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.lightGrey));
-
-                TextView textView = new TextView(MainActivity.this);
-                f = Character.toUpperCase(f.charAt(0)) + f.substring(1);
-                textView.setText(f);
-                textView.setTextSize(20);
-                textView.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.white));
-                cardView.addView(textView);
-                LinearLayout layout = findViewById(R.id.cardContainer);
-                layout.addView(cardView);
-            },1000);
-            alertDialog.dismiss();
-        });
+class MyAdapter extends FragmentStateAdapter {
+    private final String[] title;
+    public MyAdapter(FragmentActivity fm, String[] title) {
+        super(fm);
+        this.title = title;
     }
 
-    private int dpToPx(int dp) {
-        float density = getResources().getDisplayMetrics().density;
-        return Math.round((float) dp * density);
+    @Override
+    public Fragment createFragment(int position) {
+        Fragment f = null;
+        if (position == 0) {
+            f = new Monday();
+
+        } else if (position == 1) {
+            f = new Tuesday();
+        } else if (position == 2) {
+            f = new Wednesday();
+        } else if (position == 3) {
+            f = new Thrusday();
+        } else if (position == 4) {
+            f = new Friday();
+        } else if (position == 5) {
+            f = new Saturday();
+        } else {
+            f = new Sunday();
+        }
+
+        return f;
     }
+    @Override
+    public int getItemCount() {
+        return MainActivity.titles.length;
+    }
+
 }
